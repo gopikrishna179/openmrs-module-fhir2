@@ -1,0 +1,15 @@
+pipeline {
+    agent {label 'MVN3 && JDK11 && PY3 && NVM' }
+    stages {
+        stage('clone') {
+            steps {
+                git url : 'https://github.com/gopikrishna179/openmrs-module-fhir2.git' , branch : 'SPRINT_1_DEV'
+            }
+        }
+        stage('install') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}
